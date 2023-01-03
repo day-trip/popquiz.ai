@@ -7,7 +7,6 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Confirm from "./pages/auth/Confirm";
 import JoinGame from "./pages/game/JoinGame";
-import Fractal from "./pages/Fractal";
 import QuizScreen from "./pages/teacher/QuizScreen";
 import useTheme from "./hooks/UseTheme";
 import PageBackground from "./component/PageBackground";
@@ -47,10 +46,6 @@ const App = () => {
         {
             path: "/join",
             element: <JoinGame/>
-        },
-        {
-            path: "/fractal",
-            element: <Fractal/>
         },
     ]);
 
