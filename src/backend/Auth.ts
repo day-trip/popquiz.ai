@@ -5,7 +5,7 @@ import {
     CognitoUserPool, CognitoUserSession, ISignUpResult
 } from 'amazon-cognito-identity-js';
 
-import Q from "Q";
+import Q from "q";
 
 
 class Auth {
