@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
-    "@types/voronoi-diagram": "^1.0.1",
     "amazon-cognito-identity-js": "^6.0.1",
     "aws-sdk": "^2.1227.0",
     "axios": "^1.2.1",
