@@ -5,7 +5,7 @@ import {
     CognitoUserPool, CognitoUserSession, ISignUpResult
 } from 'amazon-cognito-identity-js';
 
-import Q from "q";
+import {Promise} from "bluebird";
 
 
 class Auth {
@@ -39,7 +39,7 @@ class Auth {
     }
 
     static async login(email: string, password: string): Promise<CognitoUserSession> {
-        const d = Q.defer<CognitoUserSession>();
+        const d = Promise.defer<CognitoUserSession>();
 
         const user = this._createCognitoUser(email);
         user.authenticateUser(this._createAuthenticationDetails(email, password), {
@@ -55,21 +55,21 @@ class Auth {
     }
 
     static async register(email: string, password: string, attributes: {[key: string]: string}): Promise<ISignUpResult> {
-        const d = Q.defer<ISignUpResult>();
+        const d = Promise.defer<ISignUpResult>();
 
         this.pool.signUp(email, password, this._createAttributeList({'email': email, ...attributes}), [], (err, result) => {
             if (err) {
                 d.reject(err);
                 return;
             }
-            d.resolve(result);
+            d.resolve(result!);
         });
 
         return d.promise;
     }
 
     static async confirm(email: string, code: string): Promise<any> {
-        const d = Q.defer<any>();
+        const d = Promise.defer<any>();
 
         const user = this._createCognitoUser(email);
         user.confirmRegistration(code, true, (err, result) => {
@@ -84,7 +84,7 @@ class Auth {
     }
 
     static async logout() {
-        const d = Q.defer();
+        const d = Promise.defer();
 
         const user = this.getUser();
         if (user) {
@@ -101,7 +101,7 @@ class Auth {
     }
 
     static async getToken(user: CognitoUser, type: 'ACCESS' | 'ID'): Promise<CognitoAccessToken | CognitoIdToken> {
-        const d = Q.defer<CognitoAccessToken | CognitoIdToken>();
+        const d = Promise.defer<CognitoAccessToken | CognitoIdToken>();
 
         user.getSession((err?: Error | null, session?: CognitoUserSession) => {
             if (err) {

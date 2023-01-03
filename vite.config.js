@@ -12,10 +12,5 @@ export default defineConfig({
     plugins: [
         flowPlugin(),
         react(),
-    ],
-    build: {
-        rollupOptions: {
-            external: ['q'],
-        }
-    }
+    ]
 })
