@@ -8,7 +8,7 @@ import React from 'react';
 import useObjectState from "../../hooks/UseObjectState";
 import useTheme from "../../hooks/UseTheme";
 import Navbar from "../../component/Navbar";
-import Question from "../../Question";
+import {Question} from "../../backend/Tables";
 import {quizzes} from "../../backend/Tables";
 
 
@@ -107,7 +107,7 @@ const CreateQuiz = () => {
                     </select>
                 </div>
 
-                <button className="btn dark:bg-sky-500 dark:hover:bg-sky-400" onClick={gen} disabled={loadingQuestions || !(title && topic)}>{questions.length > 0 ? "Reg" : "G"}enerate Quiz</button>
+                <button className="btn styled dark:bg-sky-500" onClick={gen} disabled={loadingQuestions || !(title && topic)}>{questions.length > 0 ? "Reg" : "G"}enerate Quiz</button>
             </div>
 
             {questions.length > 0 && <>

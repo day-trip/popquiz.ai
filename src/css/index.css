@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 @layer base {
-    button.styled {
-        @apply no-animation font-bold normal-case text-base shadow-gray-700;
-        box-shadow: 0 4px var(--tw-shadow-color);
+    .btn.styled {
+        @apply no-animation font-bold normal-case text-base shadow-gray-500 border-none hover:brightness-90 dark:hover:brightness-110 disabled:bg-opacity-[85] disabled:text-opacity-95 text-white;
+        box-shadow: 0 4px var(--tw-shadow-color) !important;
     }
 
-    button.styled:hover {
-        box-shadow: 0 2px var(--tw-shadow-color);
-        transform: translateY(2px);
+    .btn.styled:hover {
+        @apply shadow-gray-400 dark:shadow-gray-600;
+        box-shadow: 0 3px var(--tw-shadow-color) !important;
+        transform: translateY(1px);
     }
 
     p.styled {
@@ -24,7 +25,7 @@
     }
 
     .input.styled {
-        @apply bg-white placeholder-gray-300 border-gray-400 focus:border-gray-600 border-2 ring-transparent font-bold focus:placeholder-opacity-70 shadow-sm;
+        @apply bg-white dark:bg-slate-700 placeholder-gray-300 dark:placeholder-gray-400 focus:placeholder-opacity-70 border-gray-400 focus:border-gray-600 dark:border-gray-600 dark:focus:border-gray-400 border-2 ring-transparent font-bold shadow-sm;
     }
 
     .checkbox.styled {
@@ -36,6 +37,26 @@
         box-shadow: 0 1px var(--tw-shadow-color);
         transform: translateY(1px);
     }
+
+    .layout {
+        @apply w-full lg:w-auto lg:grid lg:grid-cols-6 lg:gap-10 lg:min-h-screen
+    }
+
+    .layout > div {
+        @apply col-span-1 w-full h-full lg:w-auto;
+    }
+
+    .layout > div > aside {
+        @apply w-full lg:w-56 h-full xl:w-72 px-4 xl:px-6 pb-4 sm:pb-8 pt-8 text-black dark:text-slate-100 dark:backdrop-brightness-75 backdrop-blur-sm dark:border-b sm:border-r border-slate-200 dark:border-slate-600;
+    }
+
+    .layout-lg > div > aside {
+        @apply xl:w-96;
+    }
+
+    .layout > main {
+        @apply col-span-5 px-5 lg:px-0 pt-10;
+    }
 }
 
 .input, .select, .checkbox {
@@ -43,22 +64,34 @@
 }
 
 @layer utilities {
+    html, body {
+        @apply h-full;
+    }
+
     html {
+        @apply bg-slate-50 !important;
+    }
+
+    body {
         @apply text-black dark:text-white bg-slate-50 mb-0 pb-0 bg-top bg-no-repeat;
-        transition: color ease-in-out 500ms;
+        transition: color ease-in-out 250ms;
         background-image: url(https://tailwindcss.com/_next/static/media/hero@75.b2469a49.jpg);
         background-size: 150rem;
     }
 
-    html.dark {
+    html.dark > body {
         @apply bg-[#0b1120];
         background-image: url(https://tailwindcss.com/_next/static/media/hero-dark@90.dba36cdf.jpg);
         background-size: 75rem;
     }
-}
 
-button {
-    @apply dark:text-white;
+    html.dark {
+        @apply bg-[#0b1120] !important;
+    }
+
+    #root {
+        @apply -z-50;
+    }
 }
 
 .pulsebg {
@@ -71,7 +104,7 @@ button {
         transform: scale(100%);
     }
     50% {
-        opacity: 15%;
-        transform: scale(104%);
+        opacity: 17%;
+        transform: scale(105%);
     }
 }

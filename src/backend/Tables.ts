@@ -1,6 +1,10 @@
 import Table from "./Table";
-import Question from "../Question";
 
+type Question = {
+    choices: string[],
+    answers: number[],
+    question: string
+}
 
 type Quiz = {
     id?: number,
@@ -29,5 +33,6 @@ export {
 
 export type {
     Quiz,
-    Game
+    Game,
+    Question
 }

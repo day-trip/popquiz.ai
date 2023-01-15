@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 
 const useObjectState = ([object, setObject], key: number | string, deletable: boolean = false, debug: boolean = false, defaultValue: any = undefined) => {
     const [state, setState] = useState(object[key] === undefined ? defaultValue : object[key]);

@@ -1,5 +1,6 @@
 import {Link, useLocation} from "react-router-dom";
 import React, {Dispatch, ReactNode, SetStateAction} from "react";
+import {ArrowLeftIcon} from "@heroicons/react/24/solid";
 
 
 const Navbar = ({children, theme, sticky = true}: {children?: ReactNode, theme: [string, Dispatch<SetStateAction<string>>], nested?: boolean, sticky?: boolean}) => {
@@ -7,12 +8,10 @@ const Navbar = ({children, theme, sticky = true}: {children?: ReactNode, theme: 
     const parts = path.split('/');
     const back = parts.slice(0, -1).join('/') || '/';
 
-    return <div className={`navbar shadow-lg dark:shadow-md backdrop-brightness-95 dark:backdrop-brightness-75 backdrop-blur-md mb-10 dark:text-slate-100 ${sticky && "sticky top-0 z-30"}`}>
+    return <div className={`navbar px-5 shadow-lg dark:shadow-md backdrop-brightness-95 dark:backdrop-brightness-75 backdrop-blur-md dark:text-slate-100 ${sticky && "sticky top-0 z-30"}`}>
         {parts.length > 1 && <div className="flex-none">
             <Link className="btn btn-circle btn-ghost" to={back}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
+                <ArrowLeftIcon className="w-6 h-6"/>
             </Link>
         </div>}
         <div className="flex-1">
@@ -25,7 +24,7 @@ const Navbar = ({children, theme, sticky = true}: {children?: ReactNode, theme: 
                 <svg className="swap-off fill-current w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
             </label>
             <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-circle btn-ghost">
+                <label className="btn btn-circle btn-ghost">
                     <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
                 </label>
                 <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">

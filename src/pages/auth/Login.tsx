@@ -26,12 +26,12 @@ const Login = () => {
                     <p className="font-semibold text-2xl mb-12">Sign in to your account</p>
 
                     <p className="font-bold text-md mb-2">Email</p>
-                    <FormField getter={email} setter={setEmail} type="text" className="input input-bordered w-full mb-10" placeholder="joemama@urmom.com"/>
+                    <FormField getter={email} setter={setEmail} type="text" className="input styled w-full mb-10" placeholder="joemama@urmom.com"/>
 
                     <p className="font-bold text-md mb-2">Password</p>
-                    <FormField getter={password} setter={setPassword} type="password" className="input input-bordered w-full mb-12"/>
+                    <FormField getter={password} setter={setPassword} type="password" className="input styled w-full mb-12"/>
 
-                    <button className="btn" onClick={submit}>Continue</button>
+                    <button className="btn styled" onClick={submit}>Continue</button>
                 </div>
             </div>
         </div>

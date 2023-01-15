@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext, Dispatch, SetStateAction} from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import CreateQuiz from "./pages/teacher/CreateQuiz";
 import FindScreen from "./pages/teacher/FindScreen";
@@ -9,10 +9,18 @@ import Confirm from "./pages/auth/Confirm";
 import JoinGame from "./pages/game/JoinGame";
 import QuizScreen from "./pages/teacher/QuizScreen";
 import useTheme from "./hooks/UseTheme";
-import PageBackground from "./component/PageBackground";
+import {createTheme, PaletteMode, ThemeProvider} from "@mui/material";
+
+const ThemeContext = createContext<[string, Dispatch<SetStateAction<string>>] | undefined>(['', () => {}]);
 
 const App = () => {
     const theme = useTheme();
+
+    const muiTheme = createTheme({
+        palette: {
+            mode: theme[0] as PaletteMode
+        },
+    });
 
     const router = createBrowserRouter([
         {
@@ -49,10 +57,13 @@ const App = () => {
         },
     ]);
 
-    return <>
-        <PageBackground theme={theme[0]}/>
-        <RouterProvider router={router}/>
-    </>
+    return <ThemeContext.Provider value={theme}>
+        <ThemeProvider theme={muiTheme}>
+            {/*<PageBackground theme={theme[0]}/>*/}
+            <RouterProvider router={router}/>
+        </ThemeProvider>
+    </ThemeContext.Provider>
 }
 
 export default App;
+export {ThemeContext};

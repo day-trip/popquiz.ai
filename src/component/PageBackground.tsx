@@ -55,7 +55,7 @@ const PageBackground = ({theme}: {theme: string}) => {
         }
     }, [ref]);
 
-    return <div className="-z-50 absolute top-0 left-0 overflow-hidden">
+    return <div className="-z-10 absolute top-0 left-0 overflow-hidden">
         <canvas ref={ref} className="pulsebg blur-sm" width={window.innerWidth} height={window.innerHeight}/>
     </div>
 }
